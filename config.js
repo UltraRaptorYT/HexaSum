@@ -9,7 +9,7 @@ let grid = new Array(2 * n - 1);
 
 let memoTime = 30;
 
-let roundTime = 1000;
+let roundTime = 90;
 
 let minNum = 1;
 let maxNum = 9;
