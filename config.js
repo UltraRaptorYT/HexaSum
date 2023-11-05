@@ -1,5 +1,10 @@
 let n = 3;
-let size = 90;
+let size;
+if (window.innerWidth < 768) {
+  size = 70;
+} else {
+  size = 90;
+}
 let grid = new Array(2 * n - 1);
 
 let memoTime = 10;
