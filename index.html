@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="./Hexagon.png" />
+    <title>HexaSum</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <div
+      class="flex flex-col justify-center items-center mx-auto min-w-[200px] w-full max-w-[400px] py-5"
+    >
+      <div class="flex flex-col justify-center items-center">
+        <div class="flex items-center justify-evenly gap-5">
+          <img src="./Hexagon.png" class="w-[75px]" />
+          <h1 class="font-bold text-3xl">HexaSum</h1>
+          <i
+            id="openModal"
+            class="bi bi-question-circle-fill text-xl w-[75px]"
+          ></i>
+        </div>
+        <div class="flex flex-col mt-2 text-xl justify-center items-center">
+          <div class="">
+            <span id="timerType">Memory</span> Time:
+            <span id="timerTime" class="font-bold"></span>s
+          </div>
+          <div class="">
+            Target: <span id="target" class="font-bold">0</span>
+          </div>
+        </div>
+      </div>
+      <div id="grid-container"></div>
+      <div class="flex flex-col items-center justify-center gap-5">
+        <div class="flex gap-5 text-xl">
+          <div class="">
+            Best Score: <span id="bestScore" class="font-bold">0</span>
+          </div>
+          <div class="">
+            Current Score: <span id="currentScore" class="font-bold">0</span>
+          </div>
+        </div>
+        <button
+          id="startBtn"
+          type="button"
+          data-timer="false"
+          class="w-[175px] rounded-full bg-indigo-600 px-12 py-2 text-xl font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        >
+          Start
+        </button>
+      </div>
+    </div>
+    <div
+      id="modal"
+      class="fixed inset-0 flex items-center justify-center hidden bg-black/80"
+    >
+      <div class="modal-container w-[350px]">
+        <div
+          class="bg-white py-6 rounded shadow-md flex flex-col justify-center items-center px-12"
+        >
+          <div class="text-2xl font-semibold mb-4">How To Play</div>
+          <ol class="list-decimal">
+            <li>
+              Memorize the entire board of numbers in
+              <span id="memoTime">30</span> seconds.
+            </li>
+            <li>At the start of each round, you'll receive a target number.</li>
+            <li>
+              Your goal is to find and select three hexagons that are connected
+              in a straight line and add up to the target number.
+            </li>
+            <li>
+              Click or type out the three letters corresponding to your selected
+              hexagons.
+            </li>
+            <li>
+              If you don't provide an answer within
+              <span id="roundTime">90</span> seconds, a new round will begin
+              with a new set of numbers.
+            </li>
+          </ol>
+          <div class="flex gap-4">
+            <button
+              id="resetScore"
+              class="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            >
+              Reset
+            </button>
+            <button
+              id="closeModal"
+              class="mt-4 bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./config.js"></script>
+    <script src="./game.js"></script>
+    <script src="./modal.js"></script>
+  </body>
+</html>
