@@ -130,7 +130,6 @@ function startRound() {
 
   // Generate Target
   TARGET = generateTarget(VALID_PERMUTATION);
-  console.log(VALID_PERMUTATION);
   hideNumbers();
   document.getElementById("target").innerText = TARGET;
   stopTimer();
@@ -140,7 +139,7 @@ function startRound() {
 function generateTarget(VALID_PERMUTATION) {
   let possible = [...Object.values(VALID_PERMUTATION)];
   const elementCount = {};
-  console.log(possible.sort((a, b) => a - b));
+  possible.sort((a, b) => a - b)
   for (const element of possible) {
     if (elementCount[element]) {
       elementCount[element]++;
@@ -156,7 +155,6 @@ function generateTarget(VALID_PERMUTATION) {
       highestFrequency = elementCount[element];
     }
   }
-  console.log(mostFrequentElement);
   let target = possible[Math.floor(Math.random() * possible.length)];
   target = mostFrequentElement;
   return parseInt(target);

@@ -4,7 +4,7 @@ let grid = new Array(2 * n - 1);
 
 let memoTime = 10;
 
-let roundTime = 80;
+let roundTime = 90;
 
 document.documentElement.style.setProperty("--width", size + "px");
 
