@@ -33,7 +33,7 @@ document.getElementById("closeSettingModal").addEventListener("click", () => {
   if (!GAME_STATE) {
     memoTime = memoTimeSetting.value;
     roundTime = roundTimeSetting.value;
-    maxNum = maxNumber.value;
-    minNum = minNumber.value;
+    maxNum = Math.max(maxNumber.value, minNumber.value);
+    minNum = Math.min(maxNumber.value, minNumber.value);
   }
 });
