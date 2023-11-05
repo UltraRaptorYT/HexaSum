@@ -7,9 +7,9 @@ if (window.innerWidth < 768) {
 }
 let grid = new Array(2 * n - 1);
 
-let memoTime = 10;
+let memoTime = 90;
 
-let roundTime = 90;
+let roundTime = 1000;
 
 document.documentElement.style.setProperty("--width", size + "px");
 
