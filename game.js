@@ -9,7 +9,7 @@ class Hex {
   }
 
   generateNum() {
-    return Math.floor(Math.random() * 9 + 1);
+    return Math.floor(Math.random() * maxNum + minNum);
   }
 }
 
@@ -108,7 +108,7 @@ document.getElementById("startBtn").addEventListener("click", (e) => {
   TARGET = 0;
 
   document.getElementById("target").innerText = TARGET;
-
+  console.log(memoTime);
   if (document.getElementById("startBtn").dataset.timer == "false") {
     document.getElementById("startBtn").dataset.timer = "true";
     document.getElementById("startBtn").textContent = "Started";
@@ -139,7 +139,7 @@ function startRound() {
 function generateTarget(VALID_PERMUTATION) {
   let possible = [...Object.values(VALID_PERMUTATION)];
   const elementCount = {};
-  possible.sort((a, b) => a - b)
+  possible.sort((a, b) => a - b);
   for (const element of possible) {
     if (elementCount[element]) {
       elementCount[element]++;
