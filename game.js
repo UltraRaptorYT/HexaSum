@@ -151,7 +151,7 @@ function generateTarget(VALID_PERMUTATION) {
   let mostFrequentElement = possible[0];
   let highestFrequency = elementCount[possible[0]];
   for (const element in elementCount) {
-    if (elementCount[element] < highestFrequency) {
+    if (elementCount[element] > highestFrequency) {
       mostFrequentElement = element;
       highestFrequency = elementCount[element];
     }
