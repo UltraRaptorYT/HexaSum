@@ -36,4 +36,9 @@ document.getElementById("closeSettingModal").addEventListener("click", () => {
     maxNum = Math.max(maxNumber.value, minNumber.value);
     minNum = Math.min(maxNumber.value, minNumber.value);
   }
+  setConfiguration();
 });
+
+function setConfiguration() {
+  document.getElementById("timerTime").innerText = memoTime;
+}

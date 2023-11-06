@@ -17,6 +17,12 @@
     <div
       class="flex flex-col justify-center items-center mx-auto min-w-[200px] w-full max-w-[400px] py-5"
     >
+      <div
+        class="absolute bottom-0 top-0 right-0 left-3/4 bg-white flex flex-col justify-center items-center gap-5 p-4"
+      >
+        <div id="correct" class="flex flex-col justify-center items-center gap-3"><div class="underline font-bold">Correct</div></div>
+        <div id="wrong" class="flex flex-col justify-center items-center gap-3"><div class="underline font-bold">Wrong</div></div>
+      </div>
       <div class="flex flex-col justify-center items-center">
         <div class="flex items-center justify-between gap-5">
           <img src="./Hexagon.png" class="w-[75px]" />
@@ -111,7 +117,9 @@
           class="bg-white py-6 rounded shadow-md flex flex-col justify-center items-center px-12"
         >
           <div class="text-2xl font-semibold mb-4">Settings</div>
-          <p class="mb-4">Note: Configuration must be set before the game start</p>
+          <p class="mb-4">
+            Note: Configuration must be set before the game start
+          </p>
           <div class="flex flex-col gap-4">
             <div class="relative">
               <label
@@ -160,7 +168,7 @@
                 <label
                   for="maxNumber"
                   class="absolute -top-2 left-2 inline-block bg-white px-1 text-xs font-medium text-gray-900"
-                  >Min</label
+                  >Max</label
                 >
                 <input
                   type="number"

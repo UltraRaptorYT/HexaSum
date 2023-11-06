@@ -157,6 +157,110 @@
       </div>
       <p>&nbsp;</p>
       <p>&nbsp;</p>
+
+      <style>
+        .image-container {
+          position: relative;
+          max-width: 600px;
+          margin: 0 auto;
+          text-align: center;
+        }
+
+        input[type="range"] {
+          width: 100%;
+        }
+
+        .image-wrapper {
+          position: relative;
+          overflow: hidden;
+        }
+
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+
+        /* Create the image mask and handle */
+        #before-image::before,
+        #after-image::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          width: 50%;
+          background: rgba(255, 255, 255, 0.5);
+          pointer-events: none;
+        }
+
+        #before-image::before {
+          left: 0;
+        }
+
+        #after-image::before {
+          right: 0;
+        }
+
+        /* Adjust the image position based on the slider value */
+        input[type="range"]::-webkit-slider-thumb {
+          background: #007bff;
+          width: 20px;
+          height: 20px;
+          transform: translateY(-50%);
+          cursor: pointer;
+        }
+
+        input[type="range"]::-webkit-slider-thumb::before {
+          content: "";
+          width: 20px;
+          height: 20px;
+          background: white;
+          border: 1px solid #007bff;
+          border-radius: 50%;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        input[type="range"] {
+          -webkit-appearance: none;
+          appearance: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+        }
+
+        /* Update image positions when the slider is adjusted */
+        input[type="range"] {
+          background: transparent;
+          z-index: 2;
+        }
+
+        input[type="range"]::-webkit-slider-runnable-track {
+          width: 100%;
+          height: 10px;
+          background: #ccc;
+          border-radius: 5px;
+        }
+      </style>
+      <div class="image-container">
+        <input type="range" id="slider" min="0" max="100" value="50" />
+        <label for="slider">Image Comparison Slider</label>
+        <div class="image-wrapper">
+          <img
+            src="https://www.sp.edu.sg/images/default-source/default-album/sp-campus-old-2.jpg"
+            id="before-image"
+            alt="Before Image"
+          />
+          <img
+            src="https://www.sp.edu.sg/images/default-source/default-album/sp-campus-now-3.jpg"
+            id="after-image"
+            alt="After Image"
+          />
+        </div>
+      </div>
     </div>
   </body>
 </html>

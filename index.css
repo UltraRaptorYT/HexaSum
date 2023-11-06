@@ -12,7 +12,7 @@
 }
 
 .hexagon {
-  --border-correct: green;
+  --border-correct: rgb(43, 255, 43);
   --border-wrong: red;
   --border-temp: yellow;
   --border-default: black;

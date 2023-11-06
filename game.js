@@ -132,8 +132,10 @@ function startRound() {
   TARGET = generateTarget(VALID_PERMUTATION);
   hideNumbers();
   document.getElementById("target").innerText = TARGET;
-  stopTimer();
-  startTimer(roundTime * 1000, "Round", resetBtn);
+  setTimeout(() => {
+    stopTimer();
+    startTimer(roundTime * 1000, "Round", resetBtn);
+  }, 250);
 }
 
 function generateTarget(VALID_PERMUTATION) {
@@ -266,8 +268,16 @@ function findPermutation() {
 }
 
 function resetBtn() {
+  history = {
+    correct: [],
+    wrong: [],
+  };
   stopTimer();
   GAME_STATE = false;
+  showNumbers();
+  setTimeout(() => {
+    hideNumbers();
+  }, 2500);
   document.getElementById("startBtn").dataset.timer = "false";
   document.getElementById("startBtn").textContent = "Start";
   for (let i = 0; i < grid.length; i++) {
@@ -314,6 +324,11 @@ document.addEventListener("keydown", (e) => {
 var stack = [];
 var points = 0;
 
+let history = {
+  correct: [],
+  wrong: [],
+};
+
 var resetScore = true;
 
 let bestScore = localStorage.getItem("bestScore")
@@ -343,6 +358,12 @@ function addToStack(i, j) {
       }, 0) == TARGET &&
       letterCombination.join("") in VALID_PERMUTATION
     ) {
+      for (let hex of stack) {
+        document.querySelector(
+          `.hexagon[data-r='${hex.r}'][data-q='${hex.q}']`
+        ).style.background = rs.getPropertyValue("--border-correct");
+      }
+      history.correct.push(letterCombination.join(""));
       delete VALID_PERMUTATION[letterCombination.join("")];
       console.log("CORRECT");
       points++;
@@ -352,8 +373,28 @@ function addToStack(i, j) {
         resetBtn();
       }
     } else {
+      for (let hex of stack) {
+        document.querySelector(
+          `.hexagon[data-r='${hex.r}'][data-q='${hex.q}']`
+        ).style.background = rs.getPropertyValue("--border-wrong");
+      }
+      history.wrong.push(letterCombination.join(""));
       console.log("INVALID or NOT TARGET");
       points--;
+    }
+    document.getElementById("correct").innerHTML = `<div class="underline font-bold">Correct</div>`
+    for (let i = 0; i < history.correct.length; i++) {
+      document.getElementById(
+        "correct"
+      ).innerHTML += `<p>${history.correct[i]}</p>`;
+    }
+    document.getElementById(
+      "wrong"
+    ).innerHTML = `<div class="underline font-bold">Wrong</div>`;
+    for (let i = 0; i < history.wrong.length; i++) {
+      document.getElementById(
+        "wrong"
+      ).innerHTML += `<p>${history.wrong[i]}</p>`;
     }
     document.getElementById("currentScore").innerText = points;
     if (bestScore < points) {
