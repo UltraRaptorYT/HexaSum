@@ -135,10 +135,8 @@ function startRound() {
   TARGET = generateTarget(VALID_PERMUTATION);
   hideNumbers();
   document.getElementById("target").innerText = TARGET;
-  setTimeout(() => {
-    stopTimer();
-    startTimer(roundTime * 1000, "Round", resetBtn);
-  }, 1500);
+  stopTimer();
+  startTimer(roundTime * 1000, "Round", resetBtn);
 }
 
 function generateTarget(VALID_PERMUTATION) {
