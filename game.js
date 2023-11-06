@@ -135,7 +135,7 @@ function startRound() {
   setTimeout(() => {
     stopTimer();
     startTimer(roundTime * 1000, "Round", resetBtn);
-  }, 250);
+  }, 1500);
 }
 
 function generateTarget(VALID_PERMUTATION) {
@@ -275,9 +275,6 @@ function resetBtn() {
   stopTimer();
   GAME_STATE = false;
   showNumbers();
-  setTimeout(() => {
-    hideNumbers();
-  }, 2500);
   document.getElementById("startBtn").dataset.timer = "false";
   document.getElementById("startBtn").textContent = "Start";
   for (let i = 0; i < grid.length; i++) {
@@ -382,7 +379,9 @@ function addToStack(i, j) {
       console.log("INVALID or NOT TARGET");
       points--;
     }
-    document.getElementById("correct").innerHTML = `<div class="underline font-bold">Correct</div>`
+    document.getElementById(
+      "correct"
+    ).innerHTML = `<div class="underline font-bold">Correct</div>`;
     for (let i = 0; i < history.correct.length; i++) {
       document.getElementById(
         "correct"
