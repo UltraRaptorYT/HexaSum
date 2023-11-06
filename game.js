@@ -96,31 +96,34 @@ function stopTimer() {
 }
 
 document.getElementById("startBtn").addEventListener("click", (e) => {
-  // Generate Numbers for grid
-  for (let i = 0; i < grid.length; i++) {
-    for (let j = 0; j < grid[i].length; j++) {
-      if (grid[i][j] instanceof Hex) {
-        grid[i][j].number = grid[i][j].generateNum();
+  hideNumbers();
+  setTimeout(() => {
+    // Generate Numbers for grid
+    for (let i = 0; i < grid.length; i++) {
+      for (let j = 0; j < grid[i].length; j++) {
+        if (grid[i][j] instanceof Hex) {
+          grid[i][j].number = grid[i][j].generateNum();
+        }
       }
     }
-  }
 
-  TARGET = 0;
+    TARGET = 0;
 
-  document.getElementById("target").innerText = TARGET;
-  console.log(memoTime);
-  if (document.getElementById("startBtn").dataset.timer == "false") {
-    document.getElementById("startBtn").dataset.timer = "true";
-    document.getElementById("startBtn").textContent = "Started";
-    if (resetScore) {
-      points = 0;
+    document.getElementById("target").innerText = TARGET;
+    console.log(memoTime);
+    if (document.getElementById("startBtn").dataset.timer == "false") {
+      document.getElementById("startBtn").dataset.timer = "true";
+      document.getElementById("startBtn").textContent = "Started";
+      if (resetScore) {
+        points = 0;
+      }
+      document.getElementById("currentScore").innerText = points;
+      document.getElementById("bestScore").innerText = bestScore;
+      resetScore = true;
+      showNumbers();
+      startTimer(memoTime * 1000, "Memory", startRound);
     }
-    document.getElementById("currentScore").innerText = points;
-    document.getElementById("bestScore").innerText = bestScore;
-    resetScore = true;
-    showNumbers();
-    startTimer(memoTime * 1000, "Memory", startRound);
-  }
+  }, 500);
 });
 
 function startRound() {
